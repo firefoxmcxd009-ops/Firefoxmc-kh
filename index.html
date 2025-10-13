@@ -498,7 +498,7 @@
           <img class="server-logo" src="${logoURL}" alt="Server Logo">
           <div class="server-name">${server.name}</div>
           <button class="copy-btn" onclick="copyIP('${server.ip}', this)">Copy IP</button>
-          <button class="copy-btn"><a href="https://add?external">join server</a></button>
+          <button class="copy-btn"><a href="minecraft://?addExternalServer=ServerName|${ip}:${port}">join server</a></button>
         `;
 
         if (data && data.online) {
@@ -545,4 +545,5 @@
   </script>
 </body>
 </html>
+
 
