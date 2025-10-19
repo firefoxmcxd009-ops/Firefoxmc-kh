@@ -53,6 +53,7 @@
     }
     h1 {
       text-align: center;
+      z-index: 100;
     }
 
     h2 {
@@ -69,151 +70,104 @@
 
     .logo-img {
       position: fixed;
-      left: 3;
+      left: 150px;
       width: 200px;
       height: 80px;
-      z-index: 99;
+      z-index: 100;
       display: flex;
       color: white;
       transform: translateY(-55px);
     }
 
-    /*navbar*/
+/* Header */
+header {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e1e1e;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+  right: 0;
+  top: 0;
+  box-shadow: 0px 5px 10px rgb(0, 0, 0);
+}
 
-    .nav-menu:before,
-    .nav-menu:after {
-      content: " ";
-      display: table;
-    }
-    .nav-menu:after {
-      clear: both;
-    }
-    .nav-menu {
-      zoom: 1;
-    }
-    nav {
-      padding: 50px;
-      position: fixed;
-      transform: translateY(-135px);
-      z-index: 100;
-      right: 0;
-    }
-    .menu,
-    .submenu {
-      margin: 0;
-      padding: 0;
-      list-style: none;;
-    }
-    .home-menu {
-      transform: translateY(-135px);
-    }
-    .menu {
-      margin: 50px auto;
-      width: 800px;
-      width: -moz-fit-content;
-      width: -webkit-fit-content;
-      width: fit-content;
-    }
-    .menu > li {
-      cursor: pointer;
-      user-select: none;
-      float: left;
-      margin-right: -40px;
-      font-size: 13px;
-      position: relative;
-      transform: skewX(5deg);
-      font-family: 'mineplayer';
-    }
-    .menu a {
-      display: block;
-      color: #ffffff;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-family: 'mineplayer';
-      font-size: 13px;
-      text-shadow: 0px 2px 0px rgb(0, 0, 255);
-      transition: transform 0.5s ease;
-    }
-    a:hover {
-      color: rgb(154, 213, 255);
-      transform: scale(1.05);
-    }
-    .menu > li > a {
-      transform: skewX(-5deg);
-      padding: 1em 2em;
-    }
-    /*dropDown*/
-    .menu-item {
-      position: absolute;
-      color: red;
-      left: 50%; margin-left: -100px;
-      transform: skewX(-5deg);
-      transform-origin: left top;
-    }
-    .menu-item li {
-      background: rgb(0, 114, 222);
-      width: 95px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0px 5px 10px black;
-    }
-    .menu-item li:hover {
-      background: rgb(10, 137, 255);
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
 
-      width: 95px;
-      position: relative;
-      overflow: hidden;
-    }
-    .menu-item > li > a {
-      padding: 1em 2em;
-    }
-    .menu-item > li::after {
-      content: '';
-      position: absolute;
-      top: -125%;
-    }
-    .menu-item > li:nth-child(odd){
-      transform: translateX(0);
+/* Desktop horizontal menu */
+.nav-desktop {
+  display: flex;
+  gap: 20px;
+}
 
-    }
-    .menu-item > li:nth-child(odd) > a {
-    color: rgb(255, 255, 255);
-    text-shadow: 0px 2px 0px rgb(0, 0, 165);
-    }
-    .menu-item > li:nth-child(odd)::after {
-    right: -50%;
-    transform: skewX(-5deg) rotate(0deg);
-    }
-    .menu-item > li:nth-child(even){
-    transform: skewX(5deg) translateX(0);
-    }
-    .menu-item > li:nth-child(even) > a {
-    transform: skewX(-5deg);
-    }
-    .menu-item > li:nth-child(even)::after {
-    left: 50%;
-    transform: skewX(5deg) rotate(0deg);
-    }
-    /*ShowDropDown*/
-    .menu-item,
-    .menu-item li {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .menu-item li {
-      transition:  .3s ease transform;
-    }
-    .menu > li:hover .menu-item,
-    .menu > li:hover .menu-item li {
-      opacity: 1;
-      visibility: visible;
+.nav-desktop a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: 'mineplayer';
+}
+
+.nav-desktop a:hover {
+  background: #333;
+}
+
+/* Menu button for mobile */
+.menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Sidebar for mobile */
+.sidebar {
+  font-family: 'mineplayer';
+  position: fixed;
+  top: 0;
+  left: -220px;
+  width: 200px;
+  height: 100%;
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  transition: left 0.3s;
+  box-shadow: 0px 5px 10px rgb(0, 0, 0);
+}
+
+.sidebar a {
+  color: white;
+  text-shadow: 0px 1.5px 0px rgb(0, 77, 139);
+  padding: 15px;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background: #333;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+/* Mobile view */
+@media screen and (max-width: 768px) {
+  .nav-desktop {
+    display: none; /* hide horizontal menu */
   }
-  .menu > li:hover .menu-item li:nth-child(even){
-    transform: skewX(5deg) translateX(5px);
+
+  .menu-btn {
+    display: block; /* show ☰ button */
   }
-  .menu > li:hover .menu-item li:nth-child(odd){
-    transform: skewX(-5deg) translateX(-5px);
-  }
+}
 
     /* Minecraft-style centered Loading Screen */
     #loading-screen {
@@ -265,6 +219,7 @@
       margin-bottom: 20px;
       font-size: 2rem;
       color: #00ff48;
+      z-index: 100;
       font-family: 'mineplayer', sans-serif;
     }
     #search-container {
@@ -290,6 +245,7 @@
       gap: 20px;
       max-width: 1100px;
       margin: 0 auto;
+      z-index: -1;
     }
 
     .server-card {
@@ -299,6 +255,7 @@
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
       text-align: center;
       transition: transform 0.2s, background 0.2s;
+      z-index: -1;
     }
 
     .server-card:hover {
@@ -440,6 +397,7 @@
       left: 0;
       border-radius: 5px 10px;
       box-shadow:  5px 0px 10px black;
+      z-index: 0px;
     }
 
     /*===== Follow-Me =====*/
@@ -454,30 +412,52 @@
     }
 
     /*===== Icons =====*/
-    i.fa-youtube,
-    .fa-tiktok,
-    .fa-discord {
-      color: rgb(150, 150, 150);
+    i.fa-youtube {
+      color: rgb(255, 0, 0);
       position: relative;
       right: 0;
       font-size: 20px;
       margin: 10px;
       text-shadow: 0px 2.5px 0px black;
       text-decoration: solid;
-      /
+    }
+    i.fa-tiktok {
+      color: rgb(255, 255, 255);
+      position: relative;
+      right: 0;
+      font-size: 20px;
+      margin: 10px;
+      text-shadow: 0px 2.5px 0px rgb(0, 0, 0);
+      text-decoration: solid;
+    }
+    i.fa-discord {
+      color: rgb(25, 0, 255);
+      position: relative;
+      right: 0;
+      font-size: 20px;
+      margin: 10px;
+      text-shadow: 0px 2.5px 0px rgb(0, 0, 0);
+      text-decoration: solid;
     }
 
-    /*Creator*/
-    .creator {
+    /*====Join Community=====*/
+    .community {
       font-family: 'mineplayer';
-      color: darkorange;
-      text-shadow: 0px 2.5px 0px rgb(87, 56, 0);
+      color: rgb(77, 80, 255);
+      text-shadow: 0px 2.5px 0px rgb(0, 33, 53);
       font-size: 17.5px;
     }
-    .created {
+    .join {
       font-family: 'pixelcraft';
       font-size: 14px;
+      color: #009ce4;
+      text-decoration: none;
     }
+    .join:hover {
+      color: #00d9ff;
+      text-decoration: underline;
+    }
+
     /*===== Website Link =====*/
     .website {
       color: #0077ff;
@@ -492,28 +472,59 @@
       text-decoration: underline;
     }
 
+    /*===== Auto Typing =====*/
+  .typing {
+    border-right: 3px solid #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: blink 0.8s infinite;
+    color: #00c8ff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  /*===== Typing Link =====*/
+  .typing-link {
+    color: #00d600;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .typing-link:hover {
+    color: #ffbf00;
+    text-decoration: underline;
+  }
+
   </style>
 </head>
 <body>
-  <!--Logo-FireFox-->
-  <div id="home" class="logo">
-  <h2></h2>
-  <img class="logo-img" src="https://i.ibb.co/9kHy6QWF/Gemini-Generated-Image-sn48sdsn48sdsn48-removebg-preview-1.png" alt="FireFoxMC-Logo">
-  
   <!--navbar-->
-  <nav>
-    <ul class="menu nav-menu">
-      <li>
-        <a>Contact |</a>
-        <ul class="menu-item">
-          <li><a href="https://tiktok.com/@firefoxmc_xd">TikTok</a></li>
-          <li><a href="https://youtube.com/@FireFoxMC-V2">YouTube</a></li>
-          <li><a href="https://discord.gg/K9jxdwT9">Discord</a></li>
-        </ul>
-        <li><a href="download.html">| Download |</a></li>
-        <li><a href="about.html">| About us</a></li>
-      </li>
-    </ul>
+ <header>
+    <h1 class="logo"> <img class="logo-img" src="https://i.ibb.co/9kHy6QWF/Gemini-Generated-Image-sn48sdsn48sdsn48-removebg-preview-1.png" alt="FireFoxMC-Logo"></h1>
+
+    <!-- desktop menu -->
+    <nav class="nav-desktop">
+      <a href="https://firefoxmc-server.vercel.app">Home</a>
+      <a href="about.html">About</a>
+      <a href="download.html">Download</a>
+      <a href="#contact">follow me</a>
+    </nav>
+
+    <!-- mobile menu button -->
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <!-- mobile sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <a href="index.html"><i class="fa-solid fa-house"></i>.Home</a>
+    <a href="about.html"><i class="fa-solid fa-circle-info"></i>.About</a>
+    <a href="download.html"><i class="fa-solid fa-download"></i>.Download</a>
+    <a href="#contact"><i class="fa-solid fa-message"></i>.Follow Me</a>
   </nav>
 
   </div>
@@ -540,15 +551,59 @@
   <footer class="background-them">
       <!--===== Creator =====-->
 
-    <p class="follow">follow me</p>
+  <p id="contact" class="follow">follow me</p>
 
-    <a href="https://youtube.com/@FireFoxMC-V2"><i class="fa-brands fa-youtube" title="YouTube"></i></a>
-    
-    <a href="https://tiktok.com/@firefoxmc_xd"><i class="fa-brands fa-tiktok" title="TikTok"></i></a>
-    
-    <a href="https://discord.gg/K9jxdwT9"><i class="fa-brands fa-discord" title="Discord"></i></a>
+  <p class="community"><i class="fa-brands fa-discord"></i>Join Discord community:<strong><a class="join" href="https://discord.gg/K9jxdwT9"> Discord.gg/firefoxmc</a></strong></p>
+  <p class="community" style="color: #f1f1f1;"><i class="fa-brands fa-tiktok"></i>Follow my tiktok account:<strong><a class="join" href="https://tiktok.com/@firefoxmc_xd"> @firefoxmc_xd</a></strong></p>
+  <p class="community" style="color: red;"><i class="fa-brands fa-youtube"></i>Join Discord community:<strong><a class="join" href="https://discord.gg/K9jxdwT9"> @FireFoxMC-V2</a></strong></p>
+  <!--===== Auto Typing =====-->
+  <a class="typing-link" href="https://firefoxmc-server.vercel.app"><span id="typing" class="typing"></span>FireFoxMC_XD</a>
 
-  <p class="creator">created by: <strong><a class="created" style="color: #0066ff;">FireFoxMC_XD</a></strong></p>
+<script>
+const texts = [
+  "Densign By:",
+  "Them By:",
+  "Coding By:",
+  "Hosting By:"
+];
+
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
+
+function type() {
+  if (count === texts.length) {
+    count = 0;
+  }
+  currentText = texts[count];
+  letter = currentText.slice(0, ++index);
+
+  document.getElementById("typing").textContent = letter;
+  if (letter.length === currentText.length) {
+    setTimeout(() => {
+      deleteText();
+    }, 1000);
+  } else {
+    setTimeout(type, 100);
+  }
+}
+
+function deleteText() {
+  letter = currentText.slice(0, --index);
+  document.getElementById("typing").textContent = letter;
+  if (letter.length === 0) {
+    count++;
+    index = 0;
+    setTimeout(type, 500);
+  } else {
+    setTimeout(deleteText, 50);
+  }
+}
+
+type();
+</script>
+
   <p class="website">website: <a class="web-link" href="https://firefoxmc-server.vercel.app"><strong>https://firefoxmc-server.vercel.app</strong></a></p>
 
   <p>© 2025 FirefoxMC-Server. All rights reserved.</p>
@@ -682,6 +737,10 @@
     
     };
   </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+  </script>
 </body>
-
 </html>
