@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="https://fonts.cdnfonts.com/css/mineplayer" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/pixelcraft-2" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="https://i.ibb.co/HfrQfMHf/head-fox.png">
+  <title>Minecraft Apk Download</title>
+  <style>
+    body {
+      user-select: none;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1b0034, #000b7a);
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'mineplayer';
+      font-size: 25px;
+    }
+
+    header {
+      background: linear-gradient(90deg, rgb(0, 8, 255), rgb(122, 50, 237));
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      box-shadow: 0px 5px 10px #00000095;
+      z-index: 99;
+    }
+
+    .logo {
+      width: 220px;
+    }
+
+    .menu-btn {
+      position: absolute;
+      left: 15px;
+      font-size: 30px;
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -220px;
+      width: 200px;
+      height: 100%;
+      background: #20004d;
+      box-shadow: 3px 0 8px rgba(0,0,0,0.4);
+      transition: left 0.3s ease;
+      padding-top: 80px;
+      text-align: left;
+      z-index: 98;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: 0.2s;
+      font-family: 'mineplayer';
+      text-shadow: 0px 2.5px 0px black;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255,255,255,0.1);
+      padding-left: 30px;
+    }
+
+    .download-container {
+      margin-top: 110px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      max-width: 600px;
+      font-family: 'pixelcraft';
+      font-weight: normal;
+    }
+
+    .download-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.6s ease-out;
+    }
+
+    .download-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .download-card h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #00ffcc;
+    }
+
+    .download-btn {
+      background: #0078ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'mineplayer';
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .download-btn img {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+    }
+
+    .download-btn:hover {
+      background: #0057d9;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <img class="logo" src="https://i.ibb.co/9kHy6QWF/Gemini-Generated-Image-sn48sdsn48sdsn48-removebg-preview-1.png" alt="FireFoxMC-Logo">
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="https://firefoxmc-server.vercel.app"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="https://youtube.com/@FireFoxMC-V2"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    <a href="https://tiktok.com/@firefoxmc_xd"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+    <a href="https://discord.gg/K9jxdwT9"><i class="fa-brands fa-discord"></i> Discord</a>
+    <a href="/about/"><i class="fa-solid fa-circle-info"></i> About</a>
+  </div>
+
+  <!-- Download list -->
+  <div class="download-container" id="download-list">
+    <h1>Minecraft APK Download For Android</h1>
+  </div>
+
+  <footer>
+    <p>© 2025 FireFoxMC | All rights reserved.</p>
+  </footer>
+
+  <script>
+    const DOWNLOADS = [
+      { version: "Minecraft 1.21.111.1", link: "https://www.mediafire.com/file/2ldzl9mmeh4323m/Minecraft_1.21.111.1_Official.apk/file" },
+      { version: "Minecraft 1.21.100.1", link: "https://www.mediafire.com/file/ke64ygsw94ljjr7/Minecraft+1.21.100.1+Official.apk/file" },
+      { version: "Minecraft 1.21.101.1", link: "https://www.mediafire.com/file/4ae6dp9dbfmwnc2/Minecraft+1.21.101.1+Official.apk/file" },
+      { version: "Minecraft 1.21.94.1", link: "https://u.pcloud.link/publink/show?code=XZHL7W5ZataiiWst9nFXRVNspuRMhy83f6Ny" },
+      { version: "Minecraft 1.21.93.1", link: "https://u.pcloud.link/publink/show?code=XZye3f5ZEbxqtDsBz88avJGPC4Ubufqx5iiX" },
+      { version: "Minecraft 1.21.90.3", link: "https://u.pcloud.link/publink/show?code=XZOHPu5ZJdHneyrBGqHFm3j72D8DObyveHoX" },
+    ];
+
+    const listContainer = document.getElementById("download-list");
+
+    DOWNLOADS.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "download-card";
+      card.innerHTML = `
+        <h2>${item.version}</h2>
+        <button class="download-btn" onclick="window.open('${item.link}', '_blank')">
+          <img src="https://i.ibb.co/PvrW2KBp/Minecraft.png" alt="MC"> Download
+        </button>
+      `;
+      listContainer.appendChild(card);
+    });
+
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+
+    // Scroll animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const cards = document.querySelectorAll(".download-card");
+    cards.forEach(card => observer.observe(card));
+  </script>
+
+</body>
+</html>

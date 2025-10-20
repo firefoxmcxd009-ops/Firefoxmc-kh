@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="https://fonts.cdnfonts.com/css/mineplayer" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/pixelcraft-2" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="https://i.ibb.co/HfrQfMHf/head-fox.png">
+  <title>About Us</title>
+  <style>
+    body {
+      user-select: none;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(90deg, rgb(9, 0, 176), rgb(0, 0, 102), rgb(32, 0, 161));
+      font-family: 'mineplayer';
+    }
+
+    header {
+      background: linear-gradient(90deg, rgb(0, 8, 255), rgb(122, 50, 237));
+      position: fixed;
+      height: 70px;
+      width: 100%;
+      text-align: center;
+      top: 0;
+      left: 0;
+      box-shadow: 0px 5px 10px #000000a1;
+      z-index: 1000;
+    }
+
+    .logo {
+      width: 260px;
+      animation: logo 5s infinite;
+    }
+
+    @keyframes logo {
+      0% { text-shadow: 0px 5px 10px red; }
+      50% { text-shadow: 0px 5px 10px rgb(0, 187, 56); }
+      100% { text-shadow: 0px 5px 10px rgb(0, 42, 231); }
+    }
+
+    /* Sidebar Button */
+    .menu-btn {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      font-size: 30px;
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 230px;
+      height: 100%;
+      background: rgba(10, 0, 50, 0.95);
+      box-shadow: 4px 0 10px rgba(0,0,0,0.5);
+      transition: left 0.3s ease;
+      padding-top: 90px;
+      z-index: 999;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 14px 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255,255,255,0.15);
+      padding-left: 30px;
+    }
+
+    /* About Us section */
+    .bg-about {
+      background: rgba(255, 255, 255, 0.2);
+      margin: 120px auto;
+      width: 90%;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+      text-align: center;
+      color: white;
+    }
+
+    .About-Us {
+      font-size: 36px;
+      color: aqua;
+      text-shadow: 0px 3px 2px black;
+      animation: about 0.8s ease;
+    }
+
+    @keyframes about {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .paragraph {
+      font-family: 'pixelcraft';
+      font-size: 12px;
+      line-height: 1.6;
+      text-shadow: 0px 2px 0px rgb(0, 0, 113);
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+      .logo {
+        width: 200px;
+      }
+    }
+    strong {
+      color: rgb(165, 170, 255);
+      font-family: 'mineplayer';
+      font-size: 15px;
+      font-weight: normal;
+      text-shadow: 0px 2px 0px rgb(0, 0, 108);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <img class="logo" src="https://i.ibb.co/9kHy6QWF/Gemini-Generated-Image-sn48sdsn48sdsn48-removebg-preview-1.png" alt="FireFoxMC-Logo">
+  </header>
+
+  <!-- Sidebar Menu -->
+  <div class="sidebar" id="sidebar">
+    <a href="https://firefoxmc-server.vercel.app"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="https://youtube.com/@FireFoxMC-V2"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    <a href="https://tiktok.com/@firefoxmc_xd"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+    <a href="https://discord.gg/K9jxdwT9"><i class="fa-brands fa-discord"></i> Discord</a>
+    <a href="/download/"><i class="fa-solid fa-download"></i> Download</a>
+  </div>
+
+  <!-- About Section -->
+  <div class="bg-about">
+    <p class="About-Us">About Us</p>
+    <p class="paragraph">
+      Hello! Everyone Welcome to <strong>FireFoxMC-Server</strong> Thanks for visiting my website.  
+      This website will helps you easy to find and play Khmer Minecraft servers. It showing offline or online server, playing count.
+      And you can download Minecraft Apk for Android from this Website.
+      please check in menu sidebar to download Minecraft Apk more version. 
+      New Khmer servers will be add soon. Thank you for supporting my work! ❤️
+    </p>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
