@@ -7,22 +7,19 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/HfrQfMHf/head-fox.png">
   <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/HfrQfMHf/head-fox.png">
   <link rel="manifest" href="/site.webmanifest">
-<!-- Optional: theme color for mobile -->
-<meta name="theme-color" content="#ff6600">
-<link href="https://fonts.cdnfonts.com/css/mineplayer" rel="stylesheet">  <link href="https://fonts.cdnfonts.com/css/pixelcraft-2" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chango&display=swap" rel="stylesheet">
-  <!-- Font Awesome for Social Media Icons -->
+  <meta name="theme-color" content="#ff6600">
+  <link href="https://fonts.cdnfonts.com/css/mineplayer" rel="stylesheet">  
+  <link href="https://fonts.cdnfonts.com/css/pixelcraft-2" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chango&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- 🔹 ព័ត៌មានសំខាន់សម្រាប់ Search Engine & Browser -->
   <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="FireFoxMC-Server">
   <link rel="icon" href="/favicon.ico">
   <link rel="canonical" href="https://firefoxmc-server.vercel.app/">
   <meta name="description" content="FireFoxMC - Khmer Minecraft servers. Find servers, download, and join.">
 
-  <!-- 🔹 Structured Data JSON-LD សម្រាប់ Google Search -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,6 +35,7 @@
   </script>
 
   <title>FireFoxMC-Server</title>
+
   <style>
     body {
       margin: 0;
@@ -47,16 +45,12 @@
       min-height: 100vh;
       padding: 40px 20px 80px 20px;
       overflow-x: hidden;
-      display: auto;
-      font-display: auto;
       text-align: center;
     }
-    h1 {
-      z-index: 100;
-    }
 
+    h1 { z-index: 200; }
     h2 {
-      z-index: 99;
+      z-index: 100;
       color: #000000;
       background: linear-gradient(40deg, rgb(8, 0, 98), rgb(0, 0, 198), rgb(7, 0, 87));
       width: 100%;
@@ -78,103 +72,76 @@
       transform: translateY(-55px);
     }
 
-/* Header */
-header {
-  display: flex;
-  position: fixed;
-  justify-content: space-between;
-  align-items: center;
-  background: #232222;
-  color: white;
-  padding: 10px 20px;
-  width: 100%;
-  right: 0;
-  top: 0;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.635);
-}
+    header {
+      display: flex;
+      z-index: 100;
+      position: fixed;
+      justify-content: space-between;
+      align-items: center;
+      background: #232222;
+      color: white;
+      padding: 10px 20px;
+      width: 100%;
+      right: 0;
+      top: 0;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.635);
+    }
 
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-}
+    .logo { font-size: 20px; font-weight: bold; }
+    .nav-desktop { display: flex; gap: 20px; }
 
-/* Desktop horizontal menu */
-.nav-desktop {
-  display: flex;
-  gap: 20px;
-}
+    .nav-desktop a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-family: 'mineplayer';
+    }
+    .nav-desktop a:hover { background: #333; }
 
-.nav-desktop a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-family: 'mineplayer';
-}
+    .menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      display: none;
+    }
 
-.nav-desktop a:hover {
-  background: #333;
-}
+    .sidebar {
+      font-family: 'mineplayer';
+      position: fixed;
+      top: 30px;
+      left: -220px;
+      width: 200px;
+      height: 100%;
+      background: #272727;
+      display: flex;
+      flex-direction: column;
+      padding-top: 60px;
+      transition: left 0.3s;
+      box-shadow: 0px 5px 10px rgb(0, 0, 0);
+      z-index: 99;
+    }
 
-/* Menu button for mobile */
-.menu-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 28px;
-  cursor: pointer;
-  display: none;
-}
+    .sidebar a {
+      color: white;
+      text-shadow: 0px 1.5px 0px rgb(0, 77, 139);
+      padding: 15px;
+      text-decoration: none;
+    }
+    .sidebar a:hover { background: #333; }
+    .sidebar.active { left: 0; }
 
-/* Sidebar for mobile */
-.sidebar {
-  font-family: 'mineplayer';
-  position: fixed;
-  top: 0;
-  left: -220px;
-  width: 200px;
-  height: 100%;
-  background: #000000;
-  display: flex;
-  flex-direction: column;
-  padding-top: 60px;
-  transition: left 0.3s;
-  box-shadow: 0px 5px 10px rgb(0, 0, 0);
-}
+    @media screen and (max-width: 768px) {
+      .nav-desktop { display: none; }
+      .menu-btn { display: block; }
+    }
 
-.sidebar a {
-  color: white;
-  text-shadow: 0px 1.5px 0px rgb(0, 77, 139);
-  padding: 15px;
-  text-decoration: none;
-}
-
-.sidebar a:hover {
-  background: #333;
-}
-
-.sidebar.active {
-  left: 0;
-}
-
-/* Mobile view */
-@media screen and (max-width: 768px) {
-  .nav-desktop {
-    display: none; /* hide horizontal menu */
-  }
-
-  .menu-btn {
-    display: block; /* show ☰ button */
-  }
-}
-
-    /* Minecraft-style centered Loading Screen */
     #loading-screen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-color: #000000d4;
       display: none;
       align-items: center;
@@ -188,7 +155,6 @@ header {
       font-family: 'mineplayer', sans-serif;
       font-size: 25px;
       margin-bottom: 20px;
-      letter-spacing: 1px;
       background: linear-gradient(45deg, rgb(119, 0, 255), rgb(0, 42, 255), rgb(0, 157, 255), rgb(0, 255, 26));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -202,8 +168,6 @@ header {
       border: 2px solid #00d9ff;
       border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0px 0px 8px #000000;
-      
     }
 
     #loading-bar {
@@ -218,16 +182,11 @@ header {
       margin-bottom: 20px;
       font-size: 2rem;
       color: #00ff48;
-      z-index: 100;
       font-family: 'mineplayer', sans-serif;
+      z-index: 100;
     }
-    #search-container {
-      margin-bottom: 20px;
-      left: 0;
-      text-align: center;
-      align-items: center;
 
-    }
+    #search-container { margin-bottom: 20px; text-align: center; }
     #search-input {
       padding: 10px;
       width: 250px;
@@ -254,35 +213,15 @@ header {
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
       text-align: center;
       transition: transform 0.2s, background 0.2s;
-      z-index: -1;
     }
 
-    .server-card:hover {
-      transform: scale(1.03);
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .server-logo {
-      width: 64px;
-      height: 64px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      object-fit: cover;
-      border: 2px solid #00ffcc;
-      background-color: #222;
-    }
-
-    .server-name {
-      font-size: 1.3rem;
-      color: #ffffff;
-      margin-bottom: 10px;
-      font-family: 'mineplayer', sans-serif;
-    }
+    .server-card:hover { transform: scale(1.03); background: rgba(255, 255, 255, 0.12); }
+    .server-logo { width: 64px; height: 64px; border-radius: 10px; margin-bottom: 10px; border: 2px solid #00ffcc; background-color: #222; }
+    .server-name { font-size: 1.3rem; color: #ffffff; margin-bottom: 10px; font-family: 'mineplayer', sans-serif; }
 
     .copy-btn {
-      background: linear-gradient(45deg, rgb(0, 60, 255), rgb(56, 9, 134), rgb(132, 0, 255));
+      background: linear-gradient(45deg, rgb(0, 60, 255), rgb(132, 0, 255));
       color: rgb(255, 179, 0);
-      box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.703);
       border: none;
       border-radius: 6px;
       padding: 6px 12px;
@@ -294,35 +233,12 @@ header {
       text-shadow: 0px 2.5px 0px black;
     }
 
-    .copy-btn:hover {
-      background: linear-gradient(45deg, rgb(255, 0, 0) , rgb(30, 255, 0), red );;
-      transform: scale(1.05);
-    }
+    .copy-btn:hover { transform: scale(1.02); }
 
-    .status {
-      font-size: 1rem;
-      margin: 8px 0;
-    }
-
-    .online {
-      color: #00d600;
-      font-family: 'pixelcraft', sans-serif;
-      font-weight: bold;
-      text-decoration-line: underline;
-    }
-
-    .offline {
-      color: #e74c3c;
-      font-weight: bold;
-    }
-
-    .players {
-      color: #00aeff;
-      margin-bottom: 5px;
-      font-family: 'pixelcraft', sans-serif;
-      font-weight: bold;
-      font-size: 13px;
-    }
+    .status { font-size: 1rem; margin: 8px 0; }
+    .online { color: #00d600; font-family: 'pixelcraft', sans-serif; font-weight: bold; text-decoration-line: underline; }
+    .offline { color: #e74c3c; font-weight: bold; }
+    .players { color: #00aeff; margin-bottom: 5px; font-family: 'pixelcraft', sans-serif; font-weight: bold; font-size: 13px; }
 
     .owner {
       margin-top: 10px;
@@ -339,134 +255,55 @@ header {
       text-shadow: 0px 1.5px 0px rgb(255, 255, 255);
     }
 
-    .owner img {
-      width: 40px;
-      height: 40px;
-      border-radius: 4px;
-      border: 2px solid rgb(1, 33, 158);
-    }
+    .owner img { width: 40px; height: 40px; border-radius: 4px; border: 2px solid rgb(1, 33, 158); }
 
-    .refresh-btn {
-      margin-top: 40px;
-      padding: 12px 30px;
-      background: none;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-      font-family: 'mineplayer', sans-serif;
-      align-items: center;
+    footer {
+      background-color: #111;
+      color: #fff;
+      padding: 20px;
       text-align: center;
+      border: 3px solid;
+      border-radius: 15px;
+      border-image-slice: 1;
+      border-image-source: linear-gradient(90deg, red, orange, yellow, cyan, blue, red);
+      animation: borderAnimation 1s linear infinite;
     }
 
-    .refresh-btn:hover {
-      background: #0b3dbce3;
-      transform: scale(1.05);
+    @keyframes borderAnimation {
+      0% { border-image-source: linear-gradient(0deg, red, orange, yellow, green, cyan, blue, violet, red); }
+      50% { border-image-source: linear-gradient(180deg, red, orange, yellow, green, cyan, blue, violet, red); }
+      100% { border-image-source: linear-gradient(360deg, red, orange, yellow, green, cyan, blue, violet, red); }
     }
 
-    #floating-refresh {
-      position: fixed;
-      top: 60px;
-      right: 20px;
-      background-color: #3498db;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 20px;
-      font-size: 1rem;
-      color: white;
-      cursor: pointer;
-      font-family: 'mineplayer', sans-serif;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: 0.3s;
-      z-index: 9999;
-      display: none;
+    .footer-container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+    .footer-column { flex: 1; margin: 10px; min-width: 100px; }
+    .footer-column h3 {
+      margin-bottom: 10px;
+      font-family: 'mineplayer';
+      font-weight: normal;
+      background: linear-gradient(45deg, rgb(119, 0, 255), rgb(0, 42, 255), rgb(0, 157, 255), rgb(115, 0, 255));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    #floating-refresh:disabled {
-      background-color: #666;
-      cursor: not-allowed;
-    }
-
-    /*===== footer =====*/
-  footer {
-    background-color: #333;
-    bottom: 0px;
-    color: #fff;
-    padding: 20px;
-    border: 3px solid; /* បង្កើត border */
-    border-radius: 15px; /* កំណត់ corner radius */
-    border-image-slice: 1;
-    border-image-source: linear-gradient(90deg,rgb(102, 0, 255), #ff0000, #ff6a00, rgb(81, 255, 0)); /* red gradient */
-    color: white;
-  }
-
-  .footer-container {
-    display: flex;
-    justify-content: space-between; /* ផ្សព្វផ្សាយជួរជាមួយលំហូរ */
-    flex-wrap: wrap; /* បើធំពេក វាអាចចែកជាជួរថ្មី */
-  }
-
-  .footer-column {
-    flex: 1; /* ចែកទំហំស្មើគ្នា */
-    margin: 10px;
-    min-width: 100px; /* អាចកំណត់ទំហំតិចបំផុត */
-  }
-
-  .footer-column h3 {
-    margin-bottom: 10px;
-    font-family: 'mineplayer';
-    font-weight: normal;
-    background: linear-gradient(45deg, rgb(119, 0, 255), rgb(0, 42, 255), rgb(0, 157, 255), rgb(115, 0, 255));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .footer-column a {
-    color: #0091ff;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 5px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-  }
-  .footer-column {
-    color: #000000;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 5px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-  }
-
-  .footer-column a:hover {
-    text-decoration: underline;
-    color: #00d600;
-  }
-  strong {
-    color: #00aeff;
-  }
+    .footer-column a { color: #0091ff; text-decoration: none; display: block; margin-bottom: 5px; font-size: 15px; }
+    .footer-column a:hover { text-decoration: underline; color: #00d600; }
+    strong { color: #00aeff; }
   </style>
 </head>
-<body>
-  <!--navbar-->
- <header>
-    <h1 class="logo"><img class="logo-img" src="https://i.ibb.co/9kHy6QWF/Gemini-Generated-Image-sn48sdsn48sdsn48-removebg-preview-1.png" alt="FireFoxMC-Logo"></h1>
 
-    <!-- desktop menu -->
+<body>
+  <header>
+    <h1 class="logo"><img class="logo-img" src="https://i.ibb.co/9kHy6QWF/Gemini-Generated-Image-sn48sdsn48sdsn48-removebg-preview-1.png" alt="FireFoxMC-Logo"></h1>
     <nav class="nav-desktop">
       <a href="https://firefoxmc-server.vercel.app">Home</a>
       <a href="/about/">About</a>
       <a href="/download/">Download</a>
       <a href="#contact">follow me</a>
     </nav>
-
-    <!-- mobile menu button -->
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
   </header>
 
-  <!-- mobile sidebar -->
   <nav class="sidebar" id="sidebar">
     <a href="https://firefoxmc-server.vercel.app"><i class="fa-solid fa-house"></i>.Home</a>
     <a href="/about/"><i class="fa-solid fa-circle-info"></i>.About</a>
@@ -474,57 +311,43 @@ header {
     <a href="#contact"><i class="fa-solid fa-message"></i>.Follow Me</a>
   </nav>
 
-  </div>
-  <!-- Minecraft-style Loading Screen -->
   <div id="loading-screen">
     <div id="loading-text">loading server...</div>
-    <div id="loading-bar-container"><div id="loading-bar"></div>
+    <div id="loading-bar-container"><div id="loading-bar"></div></div>
   </div>
-  </div>
+
   <h1></h1>
   <div id="search-container">
     <input type="text" id="search-input" placeholder="search Server's name..." />
   </div>
-
   <div class="server-list" id="server-list"></div>
 
-  <button class="refresh-btn" id="main-refresh" onclick="manualRefresh()" hidden></button>
-
-  <button id="floating-refresh" onclick="manualRefresh()">⟳ Refresh</button>
-
-  
-
-  <!--===== Social Media =====-->
   <footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>about us</h3>
-      <a href="#">Please click on <strong>Click Here</strong> to view more. Thank for supporting</a>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>about us</h3>
+        <a href="/about/">Please click on <strong>Click Here</strong> to view more. Thank for supporting</a>
+      </div>
+      <div class="footer-column">
+        <h3>creator</h3>
+        <a href="https://firefoxmc-server.vercel.app"><strong>FireFoxMC XD</strong></a>
+        <a>Is web developer, designer, coder</a>
+      </div>
+      <div class="footer-column" id="contact">
+        <h3>Follow Us</h3>
+        <a href="https://tiktok.com/@firefoxmc_xd"><strong><i class="fa-brands fa-tiktok"></i></strong> TikTok</a>
+        <a href="https://youtube.com/@FireFoxMC_XD"><strong><i class="fa-brands fa-youtube"></i></strong> Youtube</a>
+        <a href="#"><strong><i class="fa-brands fa-twitch"></i></strong> Twitch</a>
+        <a href="https://discord.gg/K9jxdwT9"><strong><i class="fa-brands fa-discord"></i></strong> Discord</a>
+      </div>
+      <div class="footer-column">
+        <h3>download</h3>
+        <a href="/download/"><strong>Minecraft Apk</strong></a>
+        <a><strong>Free download For Android</strong></a>
+        <a><strong>last version</strong></a>
+      </div>
     </div>
-    <div class="footer-column">
-      <h3>creator</h3>
-      <a href="#"><strong>FireFoxMC XD</strong></a>
-      <a>Is web developer, designer, coder</a>
-    </div>
-    <div class="footer-column">
-      <h3>Follow Us</h3>
-      <a href="https://tiktok.com/@firefoxmc_xd"><strong><i class="fa-brands fa-tiktok"></i></strong> TikTok</a>
-      <a href="https://youtube.com/@FireFoxMC_XD"><strong><i class="fa-brands fa-youtube"></i></strong> Youtube</a>
-      <a href="#"><strong><i class="fa-brands fa-twitch"></i></strong> Twitch</a>
-      <a href="https://discord.gg/K9jxdwT9"><strong><i class="fa-brands fa-discord"></i></strong> Discord</a>
-  </div>
-  <div class="footer-column">
-    <h3>download</h3>
-    <a href="/download/"><strong>Minecraft Apk</strong></a>
-    <a><strong>Free download For Android</strong></a>
-    <a><strong>last version</strong></a>
-  </div>
-  </div>
-  <p>© 2025 FireFoxMC | All rights reserved.</p>
-</footer>
-
-  
-
+    <p>© 2025 FireFoxMC | All rights reserved.</p>
   </footer>
 
   <script>
@@ -542,15 +365,14 @@ header {
       { name: "angkorek smp", ip:"mc.angkoreksmp.xyz", owner: "bestjack" },
       { name: "Romdoul MC", ip:"romdoulmc.vip", owner: "jerry25kk" },
       { name: "kesor", ip:"kesor.cam", owner: "unknow" },
-      { name: "angkor smp", ip:"angkorsmp.com", owner: "unknow" },
       { name: "coming soon", ip:"server.com", owner: "unknow" },
       { name: "coming soon", ip:"server.com", owner: "unknow" },
+      { name: "coming soon", ip:"server.com", owner: "unknow" },
+      
     ];
 
     const container = document.getElementById("server-list");
     const searchInput = document.getElementById("search-input");
-    const floatingButton = document.getElementById("floating-refresh");
-    const mainRefreshButton = document.getElementById("main-refresh");
     const loadingScreen = document.getElementById("loading-screen");
     const loadingBar = document.getElementById("loading-bar");
 
@@ -563,116 +385,77 @@ header {
       }
     }
 
-    // Show Minecraft-style loading screen
     function showLoadingScreen() {
       loadingScreen.style.display = "flex";
-      mainRefreshButton.style.display = "none";
-      floatingButton.style.display = "none";
       let progress = 0;
-
       const interval = setInterval(() => {
         progress += Math.random() * 8;
         if (progress > 90) progress = 90;
         loadingBar.style.width = progress + "%";
-      }, 150);
-
-      return () => {
-        clearInterval(interval);
-        loadingBar.style.width = "100%";
-        setTimeout(() => {
-          loadingScreen.style.display = "none";
-          mainRefreshButton.style.display = "inline-block";
-        }, 600);
-      };
-    }
-
-    function renderOwner(ownerName) {
-      if (!ownerName) return "";
-      return `
-        <div class="owner">
-          <img src="https://minotar.net/helm/${ownerName}/48.png" alt="Owner Head" />
-          <span>${ownerName} ( Owner )</span>
-        </div>`;
+      }, 200);
+      return interval;
     }
 
     async function loadServers() {
-      const finishLoading = showLoadingScreen();
-      container.innerHTML = "<p>Loading Server...</p>";
-
-      const results = await Promise.all(SERVERS.map(s => fetchServerData(s.ip)));
-      finishLoading();
-
-      const filterText = searchInput.value.trim().toLowerCase();
+      const interval = showLoadingScreen();
       container.innerHTML = "";
+      let results = [];
 
-      results.forEach((data, i) => {
+      for (let i = 0; i < SERVERS.length; i++) {
         const server = SERVERS[i];
-        if (server.name.toLowerCase().indexOf(filterText) === -1) return;
+        const data = await fetchServerData(server.ip);
+        const online = data && data.online;
+        const logoURL = data?.icon || "https://i.ibb.co/HfrQfMHf/head-fox.png";
+        const players = online ? `${data.players.online}/${data.players.max}` : "0/0";
+        const ownerName = server.owner || "Unknown";
 
-        const logoURL = `https://api.mcsrvstat.us/icon/${server.ip}`;
-        let html = `
-          <img class="server-logo" src="${logoURL}" alt="Server Logo">
-          <div class="server-name">${server.name}</div>
-          <button class="copy-btn" onclick="copyIP('${server.ip}', this)">IP: ${server.ip}</button>
+        const html = `
+          <div class="server-card">
+            <img class="server-logo" src="${logoURL}" alt="Server Logo">
+            <div class="server-name">${server.name}</div>
+            <div class="status ${online ? 'online' : 'offline'}">${online ? "Online" : "Offline"}</div>
+            <div class="players">Playing: ${players}</div>
+            <button class="copy-btn" onclick="copyIP('${server.ip}', this)">Copy IP</button>
+            <button class="copy-btn">IP: ${server.ip}</button>
+            <div class="owner">
+              <img src="https://mineskin.eu/helm/${ownerName}/40" alt="Owner">
+              <span>${ownerName} <strong>Owner</strong></span>
+            </div>
+          </div>
         `;
+        results.push(html);
+        loadingBar.style.width = `${((i + 1) / SERVERS.length) * 100}%`;
+      }
 
-        if (data && data.online) {
-          html += `
-            <div class="status online">online</div>
-            <div class="players">Playing: ${data.players.online} / ${data.players.max}</div>
-            ${renderOwner(server.owner)}
-          `;
-        } else {
-          html += `
-            <div class="status offline">Offline</div>
-            ${renderOwner(server.owner)}
-          `;
-        }
-
-        const card = document.createElement("div");
-        card.classList.add("server-card");
-        card.innerHTML = html;
-        container.appendChild(card);
-      });
+      clearInterval(interval);
+      loadingBar.style.width = "100%";
+      setTimeout(() => { loadingScreen.style.display = "none"; }, 500);
+      container.innerHTML = results.join("");
     }
 
     async function copyIP(ip, btn) {
-  try {
-    await navigator.clipboard.writeText(ip);
-    btn.textContent = "✅ Copied!";
-    btn.style.background = "#28a745"; // ប្ដូរពណ៌ success
-    setTimeout(() => {
-      btn.textContent = "Copy IP";
-      btn.style.background = "#022494"; // restore original color
-    }, 1500);
-  } catch (err) {
-    alert("Failed to copy IP: " + err);
-  }
-}
-
-    function manualRefresh() {
-      loadServers();
+      try {
+        await navigator.clipboard.writeText(ip);
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = "Copy IP"; }, 1500);
+      } catch (err) {
+        alert("Failed to copy IP: " + err);
+      }
     }
 
-    window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 100) floatingButton.style.display = "block";
-      else floatingButton.style.display = "none";
+    function toggleMenu() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("active");
+    }
+
+    searchInput.addEventListener("input", () => {
+      const val = searchInput.value.toLowerCase();
+      document.querySelectorAll(".server-card").forEach(card => {
+        card.style.display = card.querySelector(".server-name").textContent.toLowerCase().includes(val) ? "block" : "none";
+      });
     });
 
-    searchInput.addEventListener("input", loadServers);
-
-    window.onload = () => {
-      loadServers();
-    
-    };
-  </script>
-  <script>
-    function toggleMenu() {
-      document.getElementById("sidebar").classList.toggle("active");
-    }
+    loadServers();
   </script>
 </body>
 </html>
-
-
-
