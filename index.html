@@ -40,7 +40,7 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, sans-serif;
-      background: linear-gradient(135deg, #00012f, #00288d, #271054) fixed;
+      background: linear-gradient(135deg, #0b007e, #00288d, #250050);
       color: #f1f1f1;
       min-height: 100vh;
       padding: 40px 20px 80px 20px;
@@ -49,6 +49,7 @@
     }
 
     h1 { z-index: 200; }
+    
     h2 {
       z-index: 100;
       color: #000000;
@@ -102,10 +103,14 @@
     .menu-btn {
       background: none;
       border: none;
-      color: white;
+      color: rgb(255, 255, 255);
       font-size: 28px;
       cursor: pointer;
       display: none;
+      transform: transform 0.1s ease;
+    }
+    .memu-btn:hover {
+      color: #00c3ff;
     }
 
     .sidebar {
@@ -126,11 +131,24 @@
 
     .sidebar a {
       color: white;
-      text-shadow: 0px 1.5px 0px rgb(0, 77, 139);
+      text-shadow: none;
       padding: 15px;
       text-decoration: none;
+      transition: transform 0.25s ease;
+      animation: rgbmenu 1s infinite;
     }
-    .sidebar a:hover { background: #333; }
+
+    a {
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, rgb(0, 255, 247), rgb(99, 0, 237), rgb(149, 0, 255));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .sidebar.active { left: 0; }
 
     @media screen and (max-width: 768px) {
@@ -216,8 +234,19 @@
     }
 
     .server-card:hover { transform: scale(1.03); background: rgba(255, 255, 255, 0.12); }
-    .server-logo { width: 64px; height: 64px; border-radius: 10px; margin-bottom: 10px; border: 2px solid #00ffcc; background-color: #222; }
-    .server-name { font-size: 1.3rem; color: #ffffff; margin-bottom: 10px; font-family: 'mineplayer', sans-serif; }
+    .server-logo { width: 64px; height: 64px; border-radius: 5px; margin-bottom: 10px; border: 1.5px solid #0099ff; background-color: #222; }
+    .server-name {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-family: 'mineplayer', sans-serif;
+      background: linear-gradient(45deg, rgb(119, 0, 255), rgb(0, 42, 255), rgb(0, 157, 255), rgb(115, 0, 255));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: name 1s infinite;
+    }
+
+    /*infinite animating server name*/
 
     .copy-btn {
       background: linear-gradient(45deg, rgb(0, 60, 255), rgb(132, 0, 255));
@@ -230,10 +259,10 @@
       font-size: 0.9rem;
       margin-top: 8px;
       transition: 0.2s;
-      text-shadow: 0px 2.5px 0px black;
+      text-shadow: 0px 2px 0px black;
     }
 
-    .copy-btn:hover { transform: scale(1.02); }
+    .copy-btn:hover { transform: scale(1.02); color: #00f2ff;}
 
     .status { font-size: 1rem; margin: 8px 0; }
     .online { color: #00d600; font-family: 'pixelcraft', sans-serif; font-weight: bold; text-decoration-line: underline; }
@@ -261,7 +290,6 @@
       background-color: #111;
       color: #fff;
       padding: 20px;
-      text-align: center;
       border: 3px solid;
       border-radius: 15px;
       border-image-slice: 1;
@@ -271,8 +299,8 @@
 
     @keyframes borderAnimation {
       0% { border-image-source: linear-gradient(0deg, red, orange, yellow, green, cyan, blue, violet, red); }
-      50% { border-image-source: linear-gradient(180deg, red, orange, yellow, green, cyan, blue, violet, red); }
-      100% { border-image-source: linear-gradient(360deg, red, orange, yellow, green, cyan, blue, violet, red); }
+      50% { border-image-source: linear-gradient(180deg, rgb(4, 255, 0), orange, yellow, green, cyan, blue, violet, red); }
+      100% { border-image-source: linear-gradient(360deg, rgb(255, 47, 0), orange, yellow, green, cyan, blue, violet, red); }
     }
 
     .footer-container { display: flex; justify-content: space-between; flex-wrap: wrap; }
@@ -287,7 +315,7 @@
     }
 
     .footer-column a { color: #0091ff; text-decoration: none; display: block; margin-bottom: 5px; font-size: 15px; }
-    .footer-column a:hover { text-decoration: underline; color: #00d600; }
+    .footer-column a:hover { text-decoration: none; color: #065ff7; }
     strong { color: #00aeff; }
   </style>
 </head>
@@ -301,14 +329,14 @@
       <a href="/download/">Download</a>
       <a href="#contact">follow me</a>
     </nav>
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <button class="menu-btn" onclick="toggleMenu()" id="MB">☰</button>
   </header>
 
   <nav class="sidebar" id="sidebar">
     <a href="https://firefoxmc-server.vercel.app"><i class="fa-solid fa-house"></i>.Home</a>
-    <a href="/about/"><i class="fa-solid fa-circle-info"></i>.About</a>
     <a href="/download/"><i class="fa-solid fa-download"></i>.Download</a>
     <a href="#contact"><i class="fa-solid fa-message"></i>.Follow Me</a>
+    <a href="/about/"><i class="fa-solid fa-circle-info"></i>.About</a>
   </nav>
 
   <div id="loading-screen">
@@ -326,48 +354,50 @@
     <div class="footer-container">
       <div class="footer-column">
         <h3>about us</h3>
-        <a href="/about/">Please click on <strong>Click Here</strong> to view more. Thank for supporting</a>
+        <a href="/about/">Please click on <strong title="Click To View About Us">Click Here</strong> to view more. Thank for supporting</a>
       </div>
       <div class="footer-column">
         <h3>creator</h3>
-        <a href="https://firefoxmc-server.vercel.app"><strong>FireFoxMC XD</strong></a>
+        <a href="https://firefoxmc-server.vercel.app"><strong title="Web developer">FireFoxMC XD</strong></a>
         <a>Is web developer, designer, coder</a>
       </div>
       <div class="footer-column" id="contact">
         <h3>Follow Us</h3>
-        <a href="https://tiktok.com/@firefoxmc_xd"><strong><i class="fa-brands fa-tiktok"></i></strong> TikTok</a>
-        <a href="https://youtube.com/@FireFoxMC_XD"><strong><i class="fa-brands fa-youtube"></i></strong> Youtube</a>
-        <a href="#"><strong><i class="fa-brands fa-twitch"></i></strong> Twitch</a>
-        <a href="https://discord.gg/K9jxdwT9"><strong><i class="fa-brands fa-discord"></i></strong> Discord</a>
+        <a href="https://tiktok.com/@firefoxmc_xd" title="TikTok"><strong><i class="fa-brands fa-tiktok"></i></strong> TikTok</a>
+        <a href="https://youtube.com/@FireFoxMC_XD" title="YouTube"><strong><i class="fa-brands fa-youtube"></i></strong> Youtube</a>
+        <a href="#"><strong><i class="fa-brands fa-twitch" title="Twitch"></i></strong> Twitch</a>
+        <a href="https://discord.gg/K9jxdwT9" title="Discord"><strong><i class="fa-brands fa-discord"></i></strong> Discord</a>
       </div>
       <div class="footer-column">
-        <h3>download</h3>
-        <a href="/download/"><strong>Minecraft Apk</strong></a>
-        <a><strong>Free download For Android</strong></a>
-        <a><strong>last version</strong></a>
+        <h3><i class="fa-solid fa-download"></i> download</h3>
+        <a href="/download/">Click to download <strong title="Minecraft Apk">Minecraft Apk</strong> free for Android</a>
+      </div>
+      <div class="footer-column">
+        <h3><i class="fa-solid fa-code"></i> Code learning</h3>
+        <a href="https://codekhmerlearning.com" title="Click To Learn">learn Code On: <strong>Codekhmerlearning</strong> for free <strong>(Click Here)</strong></a>
       </div>
     </div>
-    <p>© 2025 FireFoxMC | All rights reserved.</p>
+    <p>© 2025 FireFoxMC-Server | All rights reserved.</p>
   </footer>
 
   <script>
     const SERVERS = [
-      { name: "Mazer Club", ip: "mazerclub.net", logo: "", owner: "xing_mazer" },
-      { name: "MIKITA MC", ip: "mikitamc.ink", logo: "", owner: "unknow" },
-      { name: "GTR SMP", ip: "gtrsmp.mineplay.pro", logo: "", owner: "_gtrgamingkh" },
-      { name: "Doggy SMP", ip: "doggysmp.xyz", owner: "unknow" },
-      { name: "DINO MC", ip:"dinomc.org", logo: "", owner: "phathy" },
-      { name: "ZUZADO CLUB", ip:"play.zuzado.com", logo: "", owner: "sokdodo" },
-      { name: "Friendly MC", ip:"friendlymc.vip", logo: "", owner: "yutu_Friendly" },
-      { name: "susie smp", ip:"susiesmp.lol", owner: "unknow" },
-      { name: "asura mc", ip:"asuramc.xyz", owner: "unknow" },
-      { name: "khmermc", ip:"khmermc.apsara.lol", owner: "unknow" },
-      { name: "angkorek smp", ip:"mc.angkoreksmp.xyz", owner: "bestjack" },
-      { name: "Romdoul MC", ip:"romdoulmc.vip", owner: "jerry25kk" },
-      { name: "kesor", ip:"kesor.cam", owner: "unknow" },
-      { name: "coming soon", ip:"server.com", owner: "unknow" },
-      { name: "coming soon", ip:"server.com", owner: "unknow" },
-      { name: "coming soon", ip:"server.com", owner: "unknow" },
+      { name: "Mazer Club", ip: "mazerclub.net", logo: "", },
+      { name: "MIKITA MC", ip: "mikitamc.ink", logo: "", },
+      { name: "GTR SMP", ip: "gtrsmp.mineplay.pro", logo: "", },
+      { name: "Doggy SMP", ip: "doggysmp.xyz", },
+      { name: "DINO MC", ip:"dinomc.org", logo: "", },
+      { name: "ZUZADO CLUB", ip:"play.zuzado.com", logo: "", },
+      { name: "Friendly MC", ip:"friendlymc.vip", logo: "", },
+      { name: "susie smp", ip:"susiesmp.lol", },
+      { name: "asura mc", ip:"asuramc.xyz", },
+      { name: "khmermc", ip:"khmermc.apsara.lol", },
+      { name: "angkorek smp", ip:"mc.angkoreksmp.xyz", },
+      { name: "Romdoul MC", ip:"romdoulmc.vip", },
+      { name: "kesor", ip:"kesor.cam",},
+      { name: "coming soon", ip:"server.com", },
+      { name: "coming soon", ip:"server.com", },
+      { name: "coming soon", ip:"server.com", },
       
     ];
 
@@ -407,7 +437,6 @@
         const online = data && data.online;
         const logoURL = data?.icon || "https://i.ibb.co/HfrQfMHf/head-fox.png";
         const players = online ? `${data.players.online}/${data.players.max}` : "0/0";
-        const ownerName = server.owner || "Unknown";
 
         const html = `
           <div class="server-card">
@@ -417,10 +446,6 @@
             <div class="players">Playing: ${players}</div>
             <button class="copy-btn" onclick="copyIP('${server.ip}', this)">Copy IP</button>
             <button class="copy-btn">IP: ${server.ip}</button>
-            <div class="owner">
-              <img src="https://mineskin.eu/helm/${ownerName}/40" alt="Owner">
-              <span>${ownerName} <strong>Owner</strong></span>
-            </div>
           </div>
         `;
         results.push(html);
@@ -457,5 +482,6 @@
 
     loadServers();
   </script>
+  <!--===== Menu Btn On Click =====-->
 </body>
 </html>
