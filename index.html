@@ -59,11 +59,10 @@
       text-align: center;
     }
 
-    /* ផ្លាស់ប្តូរផ្ទៃខាងក្រោយសម្រាប់ទូរស័ព្ទ (screen width < 768px) */
   @media only screen and (max-width: 768px) {
   body {
-    background-image: url("background.jpg");
-    background-attachment: fixed; /* ល្អជាងសម្រាប់ទូរស័ព្ទ */
+    background-image: url("background-gaming.jpg");
+    background-attachment: fixed;
   }
 }
 
@@ -108,6 +107,7 @@
     }
 
     .logo { font-size: 20px; font-weight: bold; }
+    .loading-logo { width: 300px;}
     .nav-desktop { display: flex; gap: 20px; }
 
     .nav-desktop a {
@@ -355,6 +355,7 @@
   </nav>
 
   <div id="loading-screen">
+    <img class="loading-logo" src="FirefoxMC-Logo.png" alt="FireFoxMC-Logo">
     <div id="loading-text">loading server...</div>
     <div id="loading-bar-container"><div id="loading-bar"></div></div>
   </div>
@@ -397,18 +398,18 @@
 
   <script>
     const SERVERS = [
-      { name: "Mazer Club", ip: "mazerclub.net", logo: "", },
-      { name: "MIKITA MC", ip: "mikitamc.ink", logo: "", },
-      { name: "GTR SMP", ip: "gtrsmp.mineplay.pro", logo: "", },
-      { name: "Doggy SMP", ip: "doggysmp.xyz", },
-      { name: "DINO MC", ip:"dinomc.org", logo: "", },
-      { name: "ZUZADO CLUB", ip:"play.zuzado.com", logo: "", },
-      { name: "Friendly MC", ip:"friendlymc.vip", logo: "", },
+      { name: "mazer club", ip: "mazerclub.net", logo: "", },
+      { name: "mikita mc", ip: "mikitamc.ink", logo: "", },
+      { name: "gtr smp", ip: "gtrsmp.mineplay.pro", logo: "", },
+      { name: "doggy smp", ip: "doggysmp.xyz", },
+      { name: "dino mc", ip:"dinomc.org", logo: "", },
+      { name: "zuzado", ip:"play.zuzado.com", logo: "", },
+      { name: "friendly mc", ip:"friendlymc.vip", logo: "", },
       { name: "susie smp", ip:"susiesmp.lol", },
       { name: "asura mc", ip:"asuramc.xyz", },
       { name: "khmermc", ip:"khmermc.apsara.lol", },
       { name: "angkorek smp", ip:"mc.angkoreksmp.xyz", },
-      { name: "Romdoul MC", ip:"romdoulmc.vip", },
+      { name: "romdoul mc", ip:"romdoulmc.vip", },
       { name: "kesor", ip:"kesor.cam",},
       { name: "coming soon", ip:"server.com", },
       { name: "coming soon", ip:"server.com", },
