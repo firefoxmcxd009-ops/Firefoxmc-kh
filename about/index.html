@@ -2,7 +2,6 @@
 <html lang="km">
 <head>
   <meta charset="UTF-8" />
-  <meta name="google-site-verification" content="G-1tDenzgFPenEI-Q1QUyJppX0c8VWgXg5txoxpGGIk" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link href="https://fonts.cdnfonts.com/css/mineplayer" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/pixelcraft-2" rel="stylesheet">
@@ -14,9 +13,20 @@
       user-select: none;
       margin: 0;
       padding: 0;
-      background: linear-gradient(90deg, rgb(9, 0, 176), rgb(0, 0, 102), rgb(32, 0, 161));
+      background: url(/dragon.jpg);
       font-family: 'mineplayer';
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
+
+    @media only screen and (max-width: 768px) {
+  body {
+    background-image: url("background-gaming.jpg");
+    background-attachment: fixed;
+  }
+}
 
     header {
       background: linear-gradient(90deg, rgb(0, 8, 255), rgb(122, 50, 237));
@@ -184,4 +194,3 @@
 
 </body>
 </html>
-
