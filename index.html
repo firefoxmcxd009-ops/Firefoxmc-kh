@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:title" content="Firefoxmc-Server" />
-  <meta property="og:description" content="សWelcome to Firefoxmc-Server. Join server, Download, and more." />
-  <meta property="og:image" content="https://firefoxmc-server.vercel.app/FirefoxMC-Logo.png" />
+  <meta property="og:description" content="Welcome to Firefoxmc-Server. Let's Join server, Download, Play, and more. Subscribe To Youtube.com/@FireFoxMC_XD to watch more videos post. Thanks fr supporting." />
+  <meta property="og:image" content="https://firefoxmc-server.vercel.app/Gemini_Generated_Image_gp5yvqgp5yvqgp5y.png" />
   <meta property="og:url" content="https://firefoxmc-server.vercel.app/" />
   <meta property="og:type" content="Firefoxmc-Server" />
 
@@ -58,7 +58,7 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, sans-serif;
-      background-image: url(c2a67106-85a5-4460-ad57-10b0fa91ccd6.jpg);
+      background-image: url(/dragon.jpg);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -77,7 +77,7 @@
   }
 }
 
-    h1 { z-index: 200; }
+    h1 { z-index: 200; background-color: black; }
     
     h2 {
       z-index: 100;
@@ -104,12 +104,12 @@
 
     header {
       display: flex;
-      z-index: 100;
+      z-index: 200;
       position: fixed;
       justify-content: space-between;
       align-items: center;
       background-image: url(background-gaming.jpg);
-      background-size: 60%;
+      background-size: 100%;
       border-radius: 10px;
       color: white;
       padding: 10px 20px;
@@ -120,8 +120,22 @@
     }
     @media only screen and (max-width: 768px) {
   header {
+    z-index: 200;
     background-image: url("c2a67106-85a5-4460-ad57-10b0fa91ccd6.jpg");
     background-attachment: fixed;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(background-gaming.jpg);
+    background-size: 100%;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    width: 100%;
+    right: 0;
+    top: 0;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.635);
   }
 }
 
@@ -158,7 +172,7 @@
       left: -220px;
       width: 200px;
       height: 100%;
-      background: #272727;
+      background-image: linear-gradient(45deg, rgb(0, 0, 142), rgb(56, 0, 116), rgb(0, 29, 102));
       display: flex;
       flex-direction: column;
       padding-top: 60px;
@@ -260,6 +274,7 @@
     }
 
     .server-card {
+      z-index: -1;
       background: rgba(255, 255, 255, 0.105);
       border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
       border-top: 1.5px solid rgba(255, 255, 255, 0.3);
@@ -419,25 +434,24 @@
   </footer>
 
   <script>
-    const SERVERS = [
-      { name: "mazer club", ip: "mazerclub.net", web: "https://www.mazerclub.com" },
-      { name: "mikita mc", ip: "mikitamc.ink", web: "https://www.mikitamc.ink" },
-      { name: "gtr smp", ip: "gtrsmp.mineplay.pro" },
-      { name: "doggy smp", ip: "doggysmp.xyz", },
-      { name: "dino mc", ip:"dinomc.org", web:"https://www.dinomc.org" },
-      { name: "zuzado", ip:"play.zuzado.com", },
-      { name: "friendly mc", ip:"friendlymc.vip", },
-      { name: "susie smp", ip:"susiesmp.lol", },
-      { name: "asura mc", ip:"asuramc.xyz", },
-      { name: "khmermc", ip:"khmermc.apsara.lol", },
-      { name: "angkorek smp", ip:"mc.angkoreksmp.xyz", },
-      { name: "romdoul mc", ip:"romdoulmc.vip", },
-      { name: "kesor", ip:"kesor.cam", },
-      { name: "sovannaphom", ip:"sovannaphom.lol", },
-      { name: "coming soon", ip:"server.com", },
-      { name: "coming soon", ip:"server.com", },
-      
-    ];
+const SERVERS = [
+  { name: "mazer club", ip: "mazerclub.net", web: "https://www.mazerclub.com" },
+  { name: "mikita mc", ip: "mikitamc.ink", web: "https://www.mikitamc.ink" },
+  { name: "gtr smp", ip: "gtrsmp.mineplay.pro" },
+  { name: "doggy smp", ip: "doggysmp.xyz" },
+  { name: "dino mc", ip:"dinomc.org", web:"https://www.dinomc.org" },
+  { name: "zuzado", ip:"play.zuzado.com" },
+  { name: "friendly mc", ip:"friendlymc.vip" },
+  { name: "susie smp", ip:"susiesmp.lol" },
+  { name: "asura mc", ip:"asuramc.xyz" },
+  { name: "khmermc", ip:"khmermc.apsara.lol" },
+  { name: "angkorek smp", ip:"mc.angkoreksmp.xyz" },
+  { name: "romdoul mc", ip:"romdoulmc.vip" },
+  { name: "kesor", ip:"kesor.cam" },
+  { name: "oceanias", ip:"Oceanias.net" },
+  { name: "coming soon", ip:"server.com" },
+  { name: "coming soon", ip:"server.com" },
+];
 
 const container = document.getElementById("server-list");
 const loadingScreen = document.getElementById("loading-screen");
@@ -453,30 +467,37 @@ async function fetchServerData(ip) {
   }
 }
 
+// ការចាប់ផ្តើម loading
 function showLoadingScreen() {
   loadingScreen.style.display = "flex";
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.random() * 8;
-    if (progress > 90) progress = 90;
-    loadingBar.style.width = progress + "%";
-  }, 200);
-  return interval;
+  loadingBar.style.width = "0%";
 }
 
-async function loadServers() {
-  const interval = showLoadingScreen();
-  container.innerHTML = "";
-  let result = [];
+// ការបញ្ចប់ loading
+function hideLoadingScreen() {
+  setTimeout(() => {
+    loadingBar.style.width = "100%";
+    setTimeout(() => (loadingScreen.style.display = "none"), 400);
+  }, 400);
+}
 
-  for (let i = 0; i < SERVERS.length; i++) {
-    const s = SERVERS[i];
+// ✅ កូដថ្មី៖ fetch ទាំងអស់ជាក្រុម (Parallel)
+async function loadServers() {
+  showLoadingScreen();
+  container.innerHTML = "";
+  const total = SERVERS.length;
+  let loaded = 0;
+
+  // បង្កើត Promise ទាំងអស់
+  const promises = SERVERS.map(async (s) => {
     const data = await fetchServerData(s.ip);
     const online = data && data.online;
     const logo = data?.icon || "https://i.ibb.co/HfrQfMHf/head-fox.png";
     const players = online ? `${data.players.online}/${data.players.max}` : "0/0";
+    loaded++;
+    loadingBar.style.width = `${Math.min((loaded / total) * 100, 100)}%`;
 
-    const html = `
+    return `
       <div class="server-card">
         <img class="server-logo" src="${logo}" alt="Server Logo">
         <div class="server-name">${s.name}</div>
@@ -486,21 +507,19 @@ async function loadServers() {
         ${s.web ? `<a href="${s.web}" target="_blank" class="copy-btn">Visit Website</a>` : ""}
       </div>
     `;
-    result.push(html);
-    loadingBar.style.width = `${((i + 1) / SERVERS.length) * 100}%`;
-  }
+  });
 
-  clearInterval(interval);
-  loadingBar.style.width = "100%";
-  setTimeout(() => { loadingScreen.style.display = "none"; }, 600);
-  container.innerHTML = result.join("");
+  // ដំណើរការ Promise ទាំងអស់
+  const results = await Promise.all(promises);
+  container.innerHTML = results.join("");
+  hideLoadingScreen();
 }
 
 async function copyIP(ip, btn) {
   try {
     await navigator.clipboard.writeText(ip);
     btn.textContent = "Copied!";
-    setTimeout(() => { btn.textContent = "Copy IP"; }, 1500);
+    setTimeout(() => (btn.textContent = "Copy IP"), 1500);
   } catch {
     alert("មិនអាចចម្លងបានទេ!");
   }
@@ -519,6 +538,7 @@ searchInput.addEventListener("input", () => {
 });
 
 loadServers();
-  </script>
+</script>
+
 </body>
 </html>
