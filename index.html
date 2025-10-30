@@ -304,17 +304,19 @@
     }
     
     .copy-btn {
-      background: linear-gradient(45deg, rgb(0, 60, 255), rgb(132, 0, 255));
       color: rgb(255, 179, 0);
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(0.5px);
+      box-shadow: 0px 1px 5px black;
       border-radius: 6px;
       padding: 6px 12px;
       cursor: pointer;
       font-family: 'mineplayer', sans-serif;
+      background: rgba(255, 255, 255, 0.2);
       font-size: 0.9rem;
       margin-top: 8px;
       transition: 0.2s;
-      text-shadow: 0px 2px 0px black;
+      text-shadow: 0px 1px 0px black;
     }
 
     .copy-btn:hover { transform: scale(1.02); color: #00f2ff;}
@@ -449,7 +451,7 @@ const SERVERS = [
   { name: "romdoul mc", ip:"romdoulmc.vip" },
   { name: "kesor", ip:"kesor.cam" },
   { name: "oceanias", ip:"Oceanias.net" },
-  { name: "coming soon", ip:"server.com" },
+  { name: "nokor mc", ip:"nokormc.xyz" },
   { name: "coming soon", ip:"server.com" },
 ];
 
@@ -503,8 +505,9 @@ async function loadServers() {
         <div class="server-name">${s.name}</div>
         <div class="status ${online ? 'online' : 'offline'}">${online ? 'Online' : 'Offline'}</div>
         <div class="players">Playing: ${players}</div>
-        <button class="copy-btn" onclick="copyIP('${s.ip}', this)">Copy IP</button>
-        ${s.web ? `<a href="${s.web}" target="_blank" class="copy-btn">Visit Website</a>` : ""}
+        <button class="copy-btn" onclick="copyIP('${s.ip}', this)">ip: <strong style="font-width: none">${s.ip}</strong></button>
+        <button class="copy-btn" onclick="copyIP('${s.ip}', this)">view</button>
+        
       </div>
     `;
   });
@@ -518,12 +521,15 @@ async function loadServers() {
 async function copyIP(ip, btn) {
   try {
     await navigator.clipboard.writeText(ip);
-    btn.textContent = "Copied!";
-    setTimeout(() => (btn.textContent = "Copy IP"), 1500);
+    btn.textContent = "✅ Copied!";
+    setTimeout(() => {
+      btn.textContent = "Copy IP";
+    }, 1500);
   } catch {
-    alert("មិនអាចចម្លងបានទេ!");
+    alert("សូមបើកនៅក្នុង HTTPS ឬ Live Server ដើម្បីចម្លងបាន។");
   }
 }
+
 
 function toggleMenu() {
   const sidebar = document.getElementById("sidebar");
